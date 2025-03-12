@@ -4,8 +4,6 @@ import { getThemeClasses } from '../utils/theme';
 import Button from './Button';
 import TypingEffect from './TypingEffect';
 import '../styles/Hero.css';
-import resumeEN from '../assets/AnneMartinez_Resume.pdf';
-import resumeDE from '../assets/AnneMartinez_Lebenslauf.pdf';
 import { FaLinkedin, FaGithub, FaEnvelope, FaChevronDown } from 'react-icons/fa';
 
 const Hero: React.FC = () => {
@@ -25,11 +23,15 @@ const Hero: React.FC = () => {
       label: 'LinkedIn',
     },
     { icon: FaGithub, href: 'https://github.com/AnneMerlyn', label: 'GitHub' },
-    { icon: FaEnvelope, href: 'mailto:martinezannemerlyn@gmail.com', label: 'Email' },
+    {
+      icon: FaEnvelope,
+      href: 'mailto:martinezannemerlyn@gmail.com',
+      label: 'Email',
+    },
   ];
 
   return (
-    <header className="flex flex-col md:min-h-[85vh]">
+    <header id="hero" className="flex flex-col md:min-h-[85vh]">
       <div className="container mx-auto px-4 text-center relative flex-grow">
         <div className={`capitals mt-16 ${getThemeClasses(theme, 'text-white', 'text-gray-800')}`}>
           <h4 className="text-xl mb-4">Hey there, I'm</h4>
@@ -41,10 +43,18 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-4 mt-6">
-          <Button href={resumeEN} variant="outline">
+          <Button
+            href="https://drive.google.com/file/d/1oxnSyrRFx6rYGHaazsxT9uYRBtwbbhII/view?usp=sharing"
+            variant="outline"
+            openInNewTab
+          >
             Download CV EN
           </Button>
-          <Button href={resumeDE} variant="outline">
+          <Button
+            href="https://drive.google.com/file/d/1VjvhKdVMnDqpM5AB5umOWPVBruUmyNZu/view?usp=sharing"
+            variant="outline"
+            openInNewTab
+          >
             Download CV DE
           </Button>
           <Button href="#contact" variant="primary">

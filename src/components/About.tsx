@@ -33,8 +33,8 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="relative overflow-hidden">
-      <div className="relative z-10 py-16 container mx-auto px-4">
+    <section id="about" className="py-16 px-4">
+      <div className="relative z-10 py-16 container mx-auto px-4 max-w-6xl">
         <h4
           className={`text-center text-xl mb-2 ${getThemeClasses(
             theme,

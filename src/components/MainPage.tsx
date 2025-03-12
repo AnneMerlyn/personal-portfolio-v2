@@ -3,7 +3,9 @@ import { useTheme } from '../contexts/ThemeContext';
 import { getThemeClasses } from '../utils/theme';
 import Hero from './Hero';
 import About from './About';
+import Experience from './Experience';
 import Contact from './Contact';
+import BottomNav from './BottomNav';
 
 const MainPage: React.FC = () => {
   const { theme } = useTheme();
@@ -18,7 +20,9 @@ const MainPage: React.FC = () => {
     >
       <Hero />
       <About />
+      <Experience />
       <Contact />
+      <BottomNav />
     </main>
   );
 };

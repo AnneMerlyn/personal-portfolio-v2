@@ -13,6 +13,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   fullWidth?: boolean;
+  openInNewTab?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -23,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className = '',
   fullWidth = false,
+  openInNewTab = false,
 }) => {
   const { theme } = useTheme();
 
@@ -72,7 +74,12 @@ const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <a href={href} className={buttonClasses}>
+      <a
+        href={href}
+        target={openInNewTab ? '_blank' : '_self'}
+        rel={openInNewTab ? 'noopener noreferrer' : undefined}
+        className={buttonClasses}
+      >
         {children}
       </a>
     );
