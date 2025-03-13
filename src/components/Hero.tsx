@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
   return (
     <header id="hero" className="flex flex-col md:min-h-[85vh]">
       <div className="container mx-auto px-4 text-center relative flex-grow">
-        <div className={`capitals mt-16 ${getThemeClasses(theme, 'text-white', 'text-gray-800')}`}>
+        <div className={`capitals mt-4 ${getThemeClasses(theme, 'text-white', 'text-gray-800')}`}>
           <h4 className="text-xl mb-4">{t('hero.greeting')}</h4>
           <h2 className="text-4xl mb-12">{t('hero.name')}</h2>
           <h2 className="text-6xl lg:text-8xl role-text font-bold mb-12">{t('hero.role')}</h2>
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
       <div className="container mx-auto px-4 pb-8">
-        <div className="flex items-center justify-center md:justify-between mt-12">
+        <div className="flex items-center justify-center md:justify-between">
           <div className="flex flex-row md:flex-col gap-4">
             {socialLinks.map((link, index) => (
               <a
