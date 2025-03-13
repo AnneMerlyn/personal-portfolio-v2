@@ -1,5 +1,6 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
+import { useLanguage } from '../hooks/useLanguage';
 import { getThemeClasses } from '../utils/theme';
 import Button from './Button';
 import TypingEffect from './TypingEffect';
@@ -8,13 +9,9 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaChevronDown } from 'react-icons/fa'
 
 const Hero: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useLanguage();
 
-  const typingPhrases = [
-    "Let's build something amazing",
-    'Turning ideas into reality',
-    'Creating digital experiences',
-    'Code. Create. Innovate.',
-  ];
+  const typingPhrases = t('hero.typingPhrases', { returnObjects: true }) as unknown as string[];
 
   const socialLinks = [
     {
@@ -34,12 +31,9 @@ const Hero: React.FC = () => {
     <header id="hero" className="flex flex-col md:min-h-[85vh]">
       <div className="container mx-auto px-4 text-center relative flex-grow">
         <div className={`capitals mt-16 ${getThemeClasses(theme, 'text-white', 'text-gray-800')}`}>
-          <h4 className="text-xl mb-4">Hey there, I'm</h4>
-          <h2 className="text-4xl mb-12">Anne Martinez</h2>
-          <h2 className="text-6xl lg:text-8xl font-bold role-text mb-12">
-            Fullstack Web
-            <br /> Developer
-          </h2>
+          <h4 className="text-xl mb-4">{t('hero.greeting')}</h4>
+          <h2 className="text-4xl mb-12">{t('hero.name')}</h2>
+          <h2 className="text-6xl lg:text-8xl role-text font-bold mb-12">{t('hero.role')}</h2>
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-4 mt-6">
@@ -48,17 +42,17 @@ const Hero: React.FC = () => {
             variant="outline"
             openInNewTab
           >
-            Download CV EN
+            {t('hero.downloadCvEn')}
           </Button>
           <Button
             href="https://drive.google.com/file/d/1VjvhKdVMnDqpM5AB5umOWPVBruUmyNZu/view?usp=sharing"
             variant="outline"
             openInNewTab
           >
-            Download CV DE
+            {t('hero.downloadCvDe')}
           </Button>
           <Button href="#contact" variant="primary">
-            Contact me
+            {t('hero.contactMe')}
           </Button>
         </div>
 
@@ -90,7 +84,7 @@ const Hero: React.FC = () => {
               href="#contact"
               className={`scroll-down ${getThemeClasses(theme, 'text-sky-400', 'text-sky-500')}`}
             >
-              Scroll Down
+              {t('hero.scrollDown')}
               <FaChevronDown className="scroll-down-arrow" />
             </a>
           </div>
@@ -99,10 +93,14 @@ const Hero: React.FC = () => {
         <div className="md:hidden mt-8">
           <a
             href="#contact"
-            className={`scroll-down ${getThemeClasses(theme, 'text-sky-400', 'text-sky-500')}`}
+            className={`flex items-center justify-center gap-2 ${getThemeClasses(
+              theme,
+              'text-sky-400',
+              'text-sky-500'
+            )}`}
           >
-            Scroll Down
-            <FaChevronDown className="scroll-down-arrow" />
+            {t('hero.scrollDown')}
+            <FaChevronDown />
           </a>
         </div>
       </div>

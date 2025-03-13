@@ -1,38 +1,32 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 
 type Language = 'EN' | 'DE';
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  t: (key: string, options?: Record<string, unknown>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    const savedLanguage = localStorage.getItem('language');
-    const browserLang = navigator.language.startsWith('de') ? 'DE' : 'EN';
-
-    return (savedLanguage as Language) || browserLang;
-  });
+  const { t } = useTranslation();
+  const language = i18n.language as Language;
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
+    i18n.changeLanguage(lang);
     localStorage.setItem('language', lang);
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
 };
 
-export const useLanguage = (): LanguageContextType => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
-};
+export { LanguageContext };
+export type { LanguageContextType };

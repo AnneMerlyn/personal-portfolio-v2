@@ -6,6 +6,7 @@
   -moz-background-clip: text;
   -webkit-background-clip: text;
   text-transform: uppercase;
+  white-space: pre-line;
 }
 
 .scroll-down {

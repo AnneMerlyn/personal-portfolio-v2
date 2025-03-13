@@ -1,5 +1,6 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
+import { useLanguage } from '../hooks/useLanguage';
 import { getThemeClasses } from '../utils/theme';
 import ImageMe from '../assets/me.png';
 import { FaAward, FaHeart, FaLightbulb } from 'react-icons/fa';
@@ -7,27 +8,25 @@ import AboutCard, { CardColor } from './AboutCard';
 
 const About: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useLanguage();
 
-  const aboutCards = [
+  const cardsWithIcons = [
     {
       icon: <FaAward />,
-      title: 'Experienced',
-      description:
-        'Years of hands-on development experience building robust applications and solving complex problems.',
+      title: t('about.cards.0.title'),
+      description: t('about.cards.0.description'),
       color: 'indigo' as CardColor,
     },
     {
       icon: <FaHeart />,
-      title: 'Dedicated',
-      description:
-        'Committed to delivering high-quality code and exceptional user experiences with attention to detail.',
+      title: t('about.cards.1.title'),
+      description: t('about.cards.1.description'),
       color: 'red' as CardColor,
     },
     {
       icon: <FaLightbulb />,
-      title: 'Competent',
-      description:
-        'Proficient in modern technologies and best practices with a continuous learning mindset.',
+      title: t('about.cards.2.title'),
+      description: t('about.cards.2.description'),
       color: 'sky' as CardColor,
     },
   ];
@@ -42,7 +41,7 @@ const About: React.FC = () => {
             'text-gray-700'
           )}`}
         >
-          Get To Know
+          {t('about.getToKnow')}
         </h4>
         <h2
           className={`text-4xl font-bold mb-12 text-center ${getThemeClasses(
@@ -51,7 +50,7 @@ const About: React.FC = () => {
             'text-sky-500'
           )}`}
         >
-          About Me
+          {t('about.aboutMe')}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -85,18 +84,11 @@ const About: React.FC = () => {
               <p
                 className={`text-lg mb-4 ${getThemeClasses(theme, 'text-gray-200', 'text-gray-700')}`}
               >
-                I'm a passionate developer with expertise in building modern web applications. My
-                journey in software development has equipped me with a diverse skill set and a
-                problem-solving mindset.
-              </p>
-              <p className={`text-lg ${getThemeClasses(theme, 'text-gray-200', 'text-gray-700')}`}>
-                I specialize in creating responsive, user-friendly interfaces using cutting-edge
-                technologies. My goal is to craft digital experiences that are not only visually
-                appealing but also highly functional and accessible.
+                {t('about.description')}
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {aboutCards.map((card, index) => (
+              {cardsWithIcons.map((card, index) => (
                 <AboutCard
                   key={index}
                   icon={card.icon}

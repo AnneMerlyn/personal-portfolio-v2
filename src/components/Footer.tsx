@@ -1,9 +1,11 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
+import { useLanguage } from '../hooks/useLanguage';
 import { getThemeClasses } from '../utils/theme';
 
 const Footer: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <footer
@@ -14,7 +16,7 @@ const Footer: React.FC = () => {
       )} pt-34 pb-8 transition-colors duration-200`}
     >
       <div className="container mx-auto px-4 text-center">
-        <p>Made with ❤️ by Anne Martinez</p>
+        <p>{t('footer.copyright') as string}</p>
       </div>
     </footer>
   );

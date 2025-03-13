@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useTheme } from '../hooks/useTheme';
 import { getThemeClasses } from '../utils/theme';
 import '../styles/Hero.css';
 
@@ -11,7 +11,7 @@ interface TypingEffectProps {
 }
 
 const TypingEffect: React.FC<TypingEffectProps> = ({
-  phrases,
+  phrases = [],
   typingSpeed = 150,
   deletingSpeed = 80,
   delayAfterPhrase = 1500,
@@ -22,10 +22,14 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
   const [loopNum, setLoopNum] = useState(0);
   const [currentSpeed, setCurrentSpeed] = useState(typingSpeed);
 
+  const phrasesArray = useMemo(() => (Array.isArray(phrases) ? phrases : []), [phrases]);
+
   useEffect(() => {
+    if (phrasesArray.length === 0) return;
+
     const handleTyping = () => {
-      const i = loopNum % phrases.length;
-      const fullText = phrases[i];
+      const i = loopNum % phrasesArray.length;
+      const fullText = phrasesArray[i];
 
       setText(
         isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1)
@@ -48,7 +52,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
     isDeleting,
     loopNum,
     currentSpeed,
-    phrases,
+    phrasesArray,
     typingSpeed,
     deletingSpeed,
     delayAfterPhrase,
@@ -56,10 +60,12 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
 
   return (
     <div className="cursor-container">
-      <div className={`typing-text ${getThemeClasses(theme, 'text-white', 'text-gray-800')}`}>
-        <span>{text}</span>
-        <span className="cursor"></span>
-      </div>
+      {phrasesArray.length > 0 && (
+        <div className={`typing-text ${getThemeClasses(theme, 'text-white', 'text-gray-800')}`}>
+          <span>{text}</span>
+          <span className="cursor"></span>
+        </div>
+      )}
     </div>
   );
 };

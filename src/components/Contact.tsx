@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
+import { useLanguage } from '../hooks/useLanguage';
 import { getThemeClasses } from '../utils/theme';
 import Button from './Button';
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
@@ -7,6 +8,7 @@ import ContactCard from './ContactCard';
 
 const Contact: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,7 +44,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-16 px-4">
       <div className="container mx-auto max-w-6xl">
-        <h4 className="text-center text-xl mb-2">Get In Touch</h4>
+        <h4 className="text-center text-xl mb-2">{t('contact.getInTouch') as string}</h4>
         <h2
           className={`text-4xl font-bold mb-8 text-center ${getThemeClasses(
             theme,
@@ -50,7 +52,7 @@ const Contact: React.FC = () => {
             'text-sky-500'
           )}`}
         >
-          Contact Me
+          {t('contact.contactMe') as string}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
@@ -76,7 +78,7 @@ const Contact: React.FC = () => {
                     'text-gray-700'
                   )}`}
                 >
-                  Name
+                  {t('contact.yourName') as string}
                 </label>
                 <input
                   type="text"
@@ -102,7 +104,7 @@ const Contact: React.FC = () => {
                     'text-gray-700'
                   )}`}
                 >
-                  Email
+                  {t('contact.yourEmail') as string}
                 </label>
                 <input
                   type="email"
@@ -128,7 +130,7 @@ const Contact: React.FC = () => {
                     'text-gray-700'
                   )}`}
                 >
-                  Message
+                  {t('contact.yourMessage') as string}
                 </label>
                 <textarea
                   id="message"
@@ -146,7 +148,7 @@ const Contact: React.FC = () => {
               </div>
 
               <Button variant="primary" className="w-full" onClick={() => handleSubmit}>
-                Send Message
+                {t('contact.sendMessage') as string}
               </Button>
             </form>
           </div>

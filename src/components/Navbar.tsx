@@ -1,12 +1,12 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTheme } from '../hooks/useTheme';
+import { useLanguage } from '../hooks/useLanguage';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { getThemeClasses, getConditionalThemeClasses } from '../utils/theme';
 
 const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <nav
@@ -50,7 +50,11 @@ const Navbar: React.FC = () => {
               'bg-gray-700 text-yellow-300',
               'bg-slate-200 text-gray-700'
             )}`}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            aria-label={
+              theme === 'light'
+                ? (t('navbar.switchToDarkMode') as string)
+                : (t('navbar.switchToLightMode') as string)
+            }
           >
             {theme === 'dark' ? <FaSun size={18} /> : <FaMoon size={18} />}
           </button>

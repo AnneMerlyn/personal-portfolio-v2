@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 import { getThemeClasses } from '../utils/theme';
 import { FaHome, FaUser, FaBriefcase, FaEnvelope } from 'react-icons/fa';
 

@@ -1,16 +1,18 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
+import { useLanguage } from '../hooks/useLanguage';
 import { getThemeClasses } from '../utils/theme';
 import ExperienceCard from './ExperienceCard';
 import { FaCode, FaServer, FaSitemap } from 'react-icons/fa';
 
 const Experience: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useLanguage();
 
   const experienceCards = [
     {
       icon: <FaCode />,
-      title: 'Frontend',
+      title: t('experience.frontend') as string,
       technologies: [
         'React & Next.js',
         'TypeScript',
@@ -21,7 +23,7 @@ const Experience: React.FC = () => {
     },
     {
       icon: <FaServer />,
-      title: 'Backend',
+      title: t('experience.backend') as string,
       technologies: [
         'C# .Net',
         'Node.js',
@@ -56,7 +58,7 @@ const Experience: React.FC = () => {
             'text-gray-700'
           )}`}
         >
-          What I Offer
+          {t('experience.whatSkills') as string}
         </h4>
         <h2
           className={`text-4xl font-bold mb-12 text-center ${getThemeClasses(
@@ -65,7 +67,7 @@ const Experience: React.FC = () => {
             'text-sky-500'
           )}`}
         >
-          My Experience
+          {t('experience.myExperience') as string}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
