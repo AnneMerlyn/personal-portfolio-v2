@@ -6,15 +6,15 @@ export const de = {
   hero: {
     greeting: 'Hallo, ich bin',
     name: 'Anne Martinez',
-    role: 'Fullstack Web\nEntwicklerin',
+    role: 'Fullstack Web\nDeveloper',
     typingPhrases: [
       'Lass uns etwas Großartiges bauen',
       'Ideen in die Realität umsetzen',
       'Digitale Erlebnisse schaffen',
       'Code. Kreieren. Innovieren.',
     ],
-    downloadCvEn: 'Lebenslauf EN',
-    downloadCvDe: 'Lebenslauf DE',
+    downloadCvEn: 'Lebenslauf',
+    downloadCvDe: 'Lebenslauf',
     contactMe: 'Kontaktiere mich',
     scrollDown: 'Nach unten scrollen',
   },

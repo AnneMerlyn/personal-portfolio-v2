@@ -9,7 +9,7 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaChevronDown } from 'react-icons/fa'
 
 const Hero: React.FC = () => {
   const { theme } = useTheme();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   const typingPhrases = t('hero.typingPhrases', { returnObjects: true }) as unknown as string[];
 
@@ -36,21 +36,24 @@ const Hero: React.FC = () => {
           <h2 className="text-6xl lg:text-8xl role-text font-bold mb-12">{t('hero.role')}</h2>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-4 mt-6">
-          <Button
-            href="https://drive.google.com/file/d/1oxnSyrRFx6rYGHaazsxT9uYRBtwbbhII/view?usp=sharing"
-            variant="outline"
-            openInNewTab
-          >
-            {t('hero.downloadCvEn')}
-          </Button>
-          <Button
-            href="https://drive.google.com/file/d/1VjvhKdVMnDqpM5AB5umOWPVBruUmyNZu/view?usp=sharing"
-            variant="outline"
-            openInNewTab
-          >
-            {t('hero.downloadCvDe')}
-          </Button>
+        <div className="flex flex-wrap justify-center items-center gap-4 my-6">
+          {language === 'EN' ? (
+            <Button
+              href="https://drive.google.com/file/d/1oxnSyrRFx6rYGHaazsxT9uYRBtwbbhII/view?usp=sharing"
+              variant="outline"
+              openInNewTab
+            >
+              {t('hero.downloadCvEn')}
+            </Button>
+          ) : (
+            <Button
+              href="https://drive.google.com/file/d/1VjvhKdVMnDqpM5AB5umOWPVBruUmyNZu/view?usp=sharing"
+              variant="outline"
+              openInNewTab
+            >
+              {t('hero.downloadCvDe')}
+            </Button>
+          )}
           <Button href="#contact" variant="primary">
             {t('hero.contactMe')}
           </Button>
