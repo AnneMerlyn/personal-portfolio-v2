@@ -57,18 +57,18 @@ const About: React.FC = () => {
           <div className="md:col-span-5 flex items-center justify-center">
             <div className="relative max-w-[300px] w-full">
               <div
-                className={`absolute inset-0 rounded-2xl transform rotate-6 scale-105 -z-10 ${getThemeClasses(
+                className={`absolute inset-0 rounded-2xl transform rotate-12 scale-105 -z-10 ${getThemeClasses(
                   theme,
-                  'bg-sky-600',
-                  'bg-sky-400'
+                  'bg-indigo-300',
+                  'bg-indigo-300'
                 )}`}
               ></div>
 
               <div
                 className={`rounded-2xl overflow-hidden w-full relative ${getThemeClasses(
                   theme,
-                  'bg-amber-400',
-                  'bg-amber-400'
+                  'bg-yellow-300',
+                  'bg-yellow-300'
                 )}`}
               >
                 <img
