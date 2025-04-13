@@ -59,6 +59,6 @@ export const de = {
     messageError: 'Fehler beim Senden der Nachricht. Bitte versuche es erneut.',
   },
   footer: {
-    copyright: '© 2023 Anne Martinez. Alle Rechte vorbehalten.',
+    copyright: '© 2025 Anne Martinez. Alle Rechte vorbehalten.',
   },
 };
